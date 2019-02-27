@@ -1,0 +1,16 @@
+h1 {
+  font-size: 30px;
+  font-style: oblique;
+  text-align: center;
+ }
+ td, th {
+  text-align: center;
+ }
+
+ thead{
+  text-transform:uppercase;
+ }
+ 
+tr>td:nth-child(2){
+  text-transform:uppercase;
+ }
