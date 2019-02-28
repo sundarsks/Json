@@ -32,6 +32,8 @@
 
 // });
 
+
+
 var resultDiv = document.getElementById("result");
 
 var newsURL = "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=perl&site=stackoverflow";
@@ -51,7 +53,8 @@ xmlhttp.onreadystatechange = function() {
         var myData = response['items'];
 		console.log(myData);
         var tbl = document.createElement('table');
-		tbl.setAttribute("class", "table table-striped table-bordered")
+		tbl.setAttribute("class", "table table-striped table-bordered");
+		tbl.setAttribute("id", "myTable");
 		var tblHead = document.createElement('thead');
 		tbl.appendChild(tblHead);
 	
@@ -98,6 +101,26 @@ xmlhttp.onreadystatechange = function() {
 
 xmlhttp.open("GET", newsURL, true);
 xmlhttp.send();
+
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+   tr = table.getElementsByTagName("tr");
+   for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		  
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 
 
 
